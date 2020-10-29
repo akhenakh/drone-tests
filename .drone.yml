@@ -1,0 +1,13 @@
+kind: pipeline
+name: build
+
+steps:
+- name: test
+  image: alpine:3.8
+  commands:
+  - echo hello
+
+- name: docker-docker
+  image: plugins/gcr
+  settings:
+    dry_run: true
