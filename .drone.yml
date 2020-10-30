@@ -12,6 +12,7 @@ steps:
 - name: docker-docker
   image: plugins/gcr
   settings:
+    mirror: http://www.google.com
     config:
       from_secret: secret_config_pull
     dry_run: true
