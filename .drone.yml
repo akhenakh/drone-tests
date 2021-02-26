@@ -10,9 +10,8 @@ steps:
   - env
   
 - name: mark
-  image: akhenakh/drone-deployment-mark:1.0
+  image: akhenakh/drone-deployment-mark:latest
   settings:
-    webhooks: https://xxx.api/
     target: prd
   when:
     status: [ success, failure ]
