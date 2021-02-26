@@ -13,5 +13,6 @@ steps:
   image: akhenakh/drone-deployment-mark:latest
   settings:
     target: prd
+    webhook: http://inair.space
   when:
     status: [ success, failure ]
