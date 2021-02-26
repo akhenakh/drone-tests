@@ -9,6 +9,13 @@ steps:
   - echo hello
   - exit 2
   
+- name: failenv
+  image: alpine:3.8
+  commands:
+  - env
+  when:
+    status: [ success, failure ]
+    
 - name: mark
   image: akhenakh/drone-deployment-mark:latest
   settings:
