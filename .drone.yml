@@ -16,3 +16,22 @@ steps:
     webhook: http://inair.space
   when:
     status: [ success, failure ]
+---
+kind: pipeline
+name: test
+type: kubernetes
+
+steps:
+- name: test2
+  image: alpine:3.8
+  commands:
+  - echo hello 2
+  - env
+  
+- name: mark2
+  image: akhenakh/drone-deployment-mark:latest
+  settings:
+    target: prd
+    webhook: http://inair.space
+  when:
+    status: [ success, failure ]
