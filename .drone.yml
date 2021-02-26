@@ -12,7 +12,7 @@ steps:
 - name: mark
   image: akhenakh/drone-deployment-mark:1.0
   settings:
-  	webhook: https://xxx.api/
-	target: prd
+    webhooks: https://xxx.api/
+    target: prd
   when:
     status: [ success, failure ]
