@@ -28,7 +28,13 @@ steps:
   - echo hello 2
   - env
   
-- name: mark2
+- name: test3
+  image: alpine:3.8
+  commands:
+  - echo hello 3
+  - env
+  
+- name: mark3
   image: akhenakh/drone-deployment-mark:latest
   settings:
     target: prd
