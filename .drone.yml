@@ -8,11 +8,11 @@ steps:
   commands:
   - echo hello
   - env
-
-- name: docker-docker
-  image: plugins/gcr
+  
+- name: mark
+  image: akhenakh/drone-deployment-mark:1.0
   settings:
-    mirror: http://www.google.com
-    config:
-      from_secret: secret_config_pull
-    dry_run: true
+  	webhook: https://xxx.api/
+	target: prd
+  when:
+    status: [ success, failure ]
