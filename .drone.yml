@@ -16,6 +16,7 @@ steps:
   - date +%s > report.txt
   - git add report.txt
   - git commit -am "Modify tracked file during workflow"
+  - git remote set-url origin https://akhenakh:$GITHUB_PAT@github.com/akhenakh/drone-tests.git
   - git push origin myautobranch
   - wget https://github.com/cli/cli/releases/download/v1.7.0/gh_1.7.0_linux_amd64.tar.gz
   - tar zxvf gh_1.7.0_linux_amd64.tar.gz  gh_1.7.0_linux_amd64/bin/gh
