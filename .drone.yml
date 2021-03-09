@@ -3,6 +3,11 @@ name: build
 type: kubernetes
 
 steps:
+- name: pr
+  image: drone-git
+  commands:
+  - git status
+  
 - name: test
   image: alpine:3.8
   commands:
