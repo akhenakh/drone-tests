@@ -17,7 +17,7 @@ steps:
   - git commit -am "Modify tracked file during workflow"
   - wget https://github.com/cli/cli/releases/download/v1.7.0/gh_1.7.0_linux_amd64.tar.gz
   - tar zxvf gh_1.7.0_linux_amd64.tar.gz  gh_1.7.0_linux_amd64/bin/gh
-  - echo $GITHUB_PATH > secret.txt
+  - echo $GITHUB_PAT > secret.txt
   - ./gh_1.7.0_linux_amd64/bin/gh auth login --with-token < secret.txt
   - ./gh_1.7.0_linux_amd64/bin/gh pr status
   - ./gh_1.7.0_linux_amd64/bin/gh/gh pr create --title "The bug is fixed" --body "Everything works again"
