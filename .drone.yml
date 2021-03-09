@@ -9,13 +9,14 @@ steps:
     GITHUB_PAT:
       from_secret: GITHUB_PAT
   commands:
+  
   - apk add wget
   - git checkout -b myautobranch
   - git status
   - date +%s > report.txt
   - git add report.txt
   - git commit -am "Modify tracked file during workflow"
-  - git -c http.extraheader=\"Authorization: Basic `echo $GITHUB_PAT | base64`\" push origin myautobranch
+  - git -c http.extraheader=\"Authorization: Basic $GITHUB_PAT\" push origin myautobranch
   - wget https://github.com/cli/cli/releases/download/v1.7.0/gh_1.7.0_linux_amd64.tar.gz
   - tar zxvf gh_1.7.0_linux_amd64.tar.gz  gh_1.7.0_linux_amd64/bin/gh
   - echo $GITHUB_PAT > secret.txt
