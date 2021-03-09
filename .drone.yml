@@ -15,7 +15,8 @@ steps:
   - date +%s > report.txt
   - git add report.txt
   - git commit -am "Modify tracked file during workflow"
-  - git -c http.extraheader="AUTHORIZATION: Basic `echo $GITHUB_PAT | base64`" push origin myautobranch
+  - B64=`echo $GITHUB_PAT | base64`
+  - git -c http.extraheader="AUTHORIZATION: Basic $B64" push origin myautobranch
   - wget https://github.com/cli/cli/releases/download/v1.7.0/gh_1.7.0_linux_amd64.tar.gz
   - tar zxvf gh_1.7.0_linux_amd64.tar.gz  gh_1.7.0_linux_amd64/bin/gh
   - echo $GITHUB_PAT > secret.txt
