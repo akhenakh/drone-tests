@@ -4,7 +4,7 @@ type: kubernetes
 
 steps:
 - name: pr
-  image: drone-git
+  image: drone/git
   commands:
   - git status
   
