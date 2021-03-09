@@ -6,11 +6,15 @@ steps:
 - name: pr
   image: drone/git
   commands:
-  - apk add gh
+  - apk add wget
   - git status
   - date +%s > report.txt
+  - git co -b myautobranch
   - git commit -am "Modify tracked file during workflow"
-  - gh pr status
+  - wget https://github.com/cli/cli/releases/download/v1.7.0/gh_1.7.0_linux_amd64.tar.gz
+  - tar zxvf gh_1.7.0_linux_amd64.tar.gz  gh_1.7.0_linux_amd64/bin/gh
+  - ./gh_1.7.0_linux_amd64/bin/gh pr status
+  - ./gh_1.7.0_linux_amd64/bin/gh/gh pr create --title "The bug is fixed" --body "Everything works again"
   
 - name: test
   image: alpine:3.8
