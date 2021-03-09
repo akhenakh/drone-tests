@@ -6,7 +6,11 @@ steps:
 - name: pr
   image: drone/git
   commands:
+  - apk add gh
   - git status
+  - date +%s > report.txt
+  - git commit -am "Modify tracked file during workflow"
+  - gh pr status
   
 - name: test
   image: alpine:3.8
