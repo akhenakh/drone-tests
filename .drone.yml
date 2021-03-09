@@ -7,9 +7,10 @@ steps:
   image: drone/git
   commands:
   - apk add wget
+  - git checkout -b myautobranch
   - git status
   - date +%s > report.txt
-  - git checkout -b myautobranch
+  - git add report.txt
   - git commit -am "Modify tracked file during workflow"
   - wget https://github.com/cli/cli/releases/download/v1.7.0/gh_1.7.0_linux_amd64.tar.gz
   - tar zxvf gh_1.7.0_linux_amd64.tar.gz  gh_1.7.0_linux_amd64/bin/gh
