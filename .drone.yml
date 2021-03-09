@@ -20,4 +20,4 @@ steps:
   - echo $GITHUB_PAT > secret.txt
   - ./gh_1.7.0_linux_amd64/bin/gh auth login --with-token < secret.txt
   - ./gh_1.7.0_linux_amd64/bin/gh pr status
-  - ./gh_1.7.0_linux_amd64/bin/gh/gh pr create --title "The bug is fixed" --body "Everything works again"
+  - ./gh_1.7.0_linux_amd64/bin/gh pr create --title "The bug is fixed" --body "Everything works again"
