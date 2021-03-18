@@ -7,11 +7,6 @@ steps:
 - name: step1
   image: alpine
   commands:
-  - echo "OK"
+  - env
 
-- name: step2
-  image: alpine
-  commands:
-  - echo "OK"
-  depends_on: 
-  - step1
+
