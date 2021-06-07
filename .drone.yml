@@ -1,7 +1,7 @@
 ---
 kind: pipeline
 name: build 
-
+type: kubernetes
 
 platform:
   os: linux
@@ -71,6 +71,7 @@ steps:
 ---
 kind: pipeline
 name: prepare
+type: kubernetes
 
 
 steps:
@@ -83,6 +84,7 @@ steps:
 ---
 kind: pipeline
 name: deploy
+type: kubernetes
 
 platform:
   os: linux
