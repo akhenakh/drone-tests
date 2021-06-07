@@ -1,12 +1,106 @@
 ---
 kind: pipeline
-type: kubernetes
-name: default
+name: build 
+
+
+platform:
+  os: linux
+  arch: amd64
 
 steps:
-- name: step1
-  image: alpine
+- name: lint 
+  image: alpine:latest
   commands:
-  - env
+    - echo "linting complete"
+  depends_on:
+    - clone 
+
+- name: generate 
+  image: alpine:latest
+  commands:
+    - echo "generate all the things"
+  depends_on:
+    - clone 
+
+- name: tests 
+  image: alpine:latest
+  commands:
+    - echo "all tests are good"
+  depends_on:
+    - generate 
+    - lint
 
 
+- name: build_backend
+  image: alpine:latest
+  commands:
+    - echo "building..."
+    - sleep 10
+    - echo "build complete"
+  depends_on:
+    - tests
+
+
+- name: tests_frontend
+  image: alpine:latest
+  commands:
+    - echo "all tests are good"
+  depends_on:
+    - clone
+
+- name: build_frontend
+  image: alpine:latest
+  commands:
+    - echo "building crazy JS stuffs..."
+    - echo "sleeping for 3 hours..."
+    - sleep 10
+    - echo "build complete"
+  depends_on:
+    - tests_frontend 
+
+
+- name: dockerize
+  image: alpine:latest
+  commands:
+    - echo "building docker image..."
+    - sleep 10
+    - echo "docker ok"
+  depends_on:
+    - build_frontend
+    - build_backend
+---
+kind: pipeline
+name: prepare
+
+
+steps:
+- name: build_assets 
+  image: alpine:latest
+  commands:
+    - sleep 10
+    - echo "build assets complete"
+
+---
+kind: pipeline
+name: deploy
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: computing 
+  image: alpine:latest
+  commands:
+    - sleep 10
+    - echo "computing complete"
+
+
+- name: deployment 
+  image: alpine:latest
+  commands:
+    - echo "deploying my super app to my super cloud"
+
+depends_on:
+- build
+- prepare
