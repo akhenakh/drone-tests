@@ -11,4 +11,4 @@ steps:
 - name: hello 
   image: alpine:latest
   commands:
-    - echo "hello 6"
+    - echo "hello 7"
